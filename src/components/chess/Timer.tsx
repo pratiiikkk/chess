@@ -17,7 +17,6 @@ interface TimerProps {
 export default function Timer({
   timeMs,
   isActive,
-  playerName,
   className = "",
   serverTimestamp,
   originalTime = 10 * 60 * 1000, // 10 minutes default
@@ -81,10 +80,7 @@ export default function Timer({
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  const getTimePercentage = () => {
-    // Use original time for percentage calculation
-    return Math.max(0, Math.min(100, (displayTime / originalTime) * 100));
-  };
+ 
 
   const isVeryLowTime = displayTime < 30000; // Less than 30 seconds
   const isLowTimeThreshold = displayTime < 60000; // Less than 1 minute

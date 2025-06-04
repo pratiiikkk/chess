@@ -180,7 +180,7 @@ export default function PlayPage() {
               <div className="space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-start space-x-3">
                   <IconTarget className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
-                  <span>Click "Start Game" to create a new game room</span>
+                  <span>Click &quot;Start Game&quot; to create a new game room</span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <IconLink className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />

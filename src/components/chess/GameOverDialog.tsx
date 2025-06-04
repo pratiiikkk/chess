@@ -19,7 +19,6 @@ import {
   IconClock,
   IconFlag,
   IconRotateClockwise,
-  IconHome,
   IconCopy,
   IconSmartHome,
 } from "@tabler/icons-react";

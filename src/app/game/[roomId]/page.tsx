@@ -9,7 +9,6 @@ import Container from "@/components/Container";
 import GameInterface from "@/components/chess/GameInterface";
 import TopBackgroundGradient from "@/components/TopGradient";
 
-
 export default function GamePage() {
   const { roomId } = useParams<{
     roomId: string;
@@ -62,11 +61,9 @@ export default function GamePage() {
   return (
     <>
       <Container className="max-w-[100vw] text-white">
-        
         <TopBackgroundGradient />
 
         <div className="mt-24 h-[calc(100vh-8rem)]">
-        
           <GameInterface />
         </div>
       </Container>

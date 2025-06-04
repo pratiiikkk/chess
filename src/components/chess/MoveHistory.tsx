@@ -32,7 +32,6 @@ export default function MoveHistory({
   className = "",
 }: MoveHistoryProps) {
   const [selectedMoveIndex, setSelectedMoveIndex] = useState(currentMoveIndex);
-  const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
     setSelectedMoveIndex(currentMoveIndex);
@@ -115,26 +114,7 @@ export default function MoveHistory({
         </div>
       </div>
 
-      {/* Settings panel */}
-      {showSettings && (
-        <div className="border-b border-[#3a3734] bg-[#1a1714] px-4 py-2">
-          <div className="space-y-1 text-xs text-gray-400">
-            <div className="flex items-center gap-2">
-              <input type="checkbox" id="showCoordinates" className="rounded" />
-              <label htmlFor="showCoordinates">Show coordinates</label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="highlightLastMove"
-                className="rounded"
-                defaultChecked
-              />
-              <label htmlFor="highlightLastMove">Highlight last move</label>
-            </div>
-          </div>
-        </div>
-      )}
+      
 
       {/* Move list */}
 

@@ -4,12 +4,10 @@ import React from "react";
 
 interface BackgroundGradientProps {
   className?: string;
-  children?: React.ReactNode;
 }
 
 export default function TopBackgroundGradient({
   className = "",
-  children,
 }: BackgroundGradientProps) {
   return (
     <div

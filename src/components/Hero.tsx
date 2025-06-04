@@ -6,9 +6,7 @@ import BackgroundGradients from "./BackgroundGradients";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import {
-  IconChessKing,
   IconChessKingFilled,
-  IconChessKnightFilled,
   IconRobot,
 } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";

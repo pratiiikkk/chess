@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useMemo } from "react";
-import { Square, Chess, Move } from "chess.js";
+import { Square, Chess } from "chess.js";
 import { Game, PlayerRole, GameStatus } from "@/types/game";
 import { SQUARE_STYLES } from "@/utils/boardUtils";
 
