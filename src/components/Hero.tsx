@@ -113,7 +113,7 @@ export default function Hero() {
               }}
             />
             <Image
-              src="/chess_hero.png"
+              src="/chess_hero.webp"
               alt="Chess Hero Image"
               width={1000}
               height={1000}

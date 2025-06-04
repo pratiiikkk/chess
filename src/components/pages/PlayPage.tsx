@@ -74,7 +74,7 @@ export default function PlayPage() {
           <div className="flex justify-center">
             <div className="relative">
               <Image
-                src="/board.png"
+                src="/board.webp"
                 alt="Chess Board"
                 width={600}
                 height={600}
