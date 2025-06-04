@@ -4,7 +4,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { SocketProvider } from "@/context/SocketProvider";
 import { GameProvider } from "@/context/GameProvider";
-
+import { unstable_ViewTransition as ViewTransition } from 'react'
+import Footer from "@/components/Footer";
 const inter = Inter({ weight: ["300", "400", "700"], subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "chess",
@@ -17,13 +18,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ViewTransition >
+
     <html lang="en">
       <body className={`${inter.className} dark antialiased`}>
         <Toaster />
         <SocketProvider>
           <GameProvider>{children}</GameProvider>
         </SocketProvider>
+        <Footer/>
       </body>
     </html>
+    </ViewTransition>
   );
 }

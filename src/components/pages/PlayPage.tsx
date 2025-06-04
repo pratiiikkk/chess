@@ -66,7 +66,7 @@ export default function PlayPage() {
     <>
     <Navbar/>
     
-    <Container className="max-w-7xl mt-20">
+    <Container className="max-w-7xl sm:mt-20">
       <TopBackgroundGradient />
       <div className="min-h-screen pt-20">
         <div className="mx-auto grid w-full grid-cols-1 gap-12 px-4 lg:grid-cols-2 lg:items-center">
@@ -74,10 +74,10 @@ export default function PlayPage() {
           <div className="flex justify-center">
             <div className="relative">
               <Image
-                src="/board.webp"
+                src="/chessboard.png"
                 alt="Chess Board"
-                width={600}
-                height={600}
+                width={1000}
+                height={1000}
                 className="rounded-2xl shadow-2xl ring-1 ring-border/20"
                 priority
               />
@@ -175,7 +175,7 @@ export default function PlayPage() {
             </div>
 
            
-            <div className="space-y-3 rounded-lg border border-border bg-card/50 p-6">
+            <div className="space-y-3 rounded-lg border border-border bg-card/50 p-6 mb-10">
               <h3 className="font-semibold text-foreground">How to Play</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-start space-x-3">
