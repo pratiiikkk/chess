@@ -13,7 +13,7 @@ export interface ServerToClientEvents {
 
   game_updated: (game: Game) => void;
   game_started: () => void;
-  game_resumed: () => void;
+  game_resumed: (game:Game) => void;
   game_ended: (data: {
     result: GameResult;
     reason: GameEndReason;

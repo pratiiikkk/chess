@@ -1,8 +1,9 @@
 "use client";
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { Chess, Move } from "chess.js";
-import { Game, PlayerRole } from "@/types/game";
+import { Game, GameStatus, PlayerRole } from "@/types/game";
 import { useSocket } from "./SocketProvider";
+import { toast } from "sonner";
 
 interface GameState {
   game: Game | null;
@@ -137,6 +138,15 @@ export const GameProvider: React.FC<GameProviderProps> = ({
       dispatch({ type: "UPDATE_GAME", payload: game });
     };
 
+    const handleGameResumed = (game: Game) => {
+      toast.message("Game resumed", {
+        
+        duration: 3000,
+        position: "top-right",
+      });
+      dispatch({ type: "UPDATE_GAME", payload: game });
+    };
+
     const handleMoveMade = (data: { move: Move; game: Game }) => {
       dispatch({ type: "UPDATE_GAME", payload: data.game });
     };
@@ -160,6 +170,14 @@ export const GameProvider: React.FC<GameProviderProps> = ({
 
     const handleDrawOffered = (data: { game: Game }) => {
       dispatch({ type: "UPDATE_GAME", payload: data.game });
+    };
+    
+    const handlePlayerDisconnected = (data: { playerId: string; playerName: string }) => {
+      toast.message(`${data.playerName} has disconnected`, {
+        description: "Game pause Waiting for reconnection...  ",
+        duration: 3000,
+        position: "top-right",
+      });
     };
 
     const handleTimerSync = (data: {
@@ -196,6 +214,8 @@ export const GameProvider: React.FC<GameProviderProps> = ({
     socket.on("error_message", handleError);
     socket.on("draw_offered", handleDrawOffered);
     socket.on("timer_sync", handleTimerSync);
+    socket.on("game_resumed", handleGameResumed);
+    socket.on("player_disconnected",handlePlayerDisconnected);
 
     return () => {
       socket.off("game_joined", handleGameJoined);
@@ -206,20 +226,26 @@ export const GameProvider: React.FC<GameProviderProps> = ({
       socket.off("error_message", handleError);
       socket.off("draw_offered", handleDrawOffered);
       socket.off("timer_sync", handleTimerSync);
+      socket.off("game_resumed", handleGameResumed);
+      socket.off("player_disconnected", handlePlayerDisconnected);
     };
   }, [socket]);
 
+  // Update connection status
   useEffect(() => {
     dispatch({ type: "SET_CONNECTED", payload: status === "connected" });
   }, [status]);
 
+  // Auto-join game when roomId is provided and socket is connected
   useEffect(() => {
     if (roomId && socket && socket.connected && !state.game) {
+      // Generate a guest ID if we don't have one
       const guestId = `guest_${Math.random().toString(36).substr(2, 9)}`;
       joinGame(guestId, roomId, "Player");
     }
   }, [roomId, socket, status, state.game]);
 
+  // Game actions
   const joinGame = (guestId: string, roomId?: string, playerName?: string) => {
     if (!socket || !socket.connected) {
       dispatch({ type: "SET_ERROR", payload: "Not connected to server" });
