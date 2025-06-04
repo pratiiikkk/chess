@@ -16,7 +16,7 @@ import Container from "../Container";
 const navItems = [
   {
     name: "Play",
-    href: "/Play",
+    href: "/play",
   },
 
   {

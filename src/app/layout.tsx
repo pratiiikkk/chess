@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { SocketProvider } from "@/context/SocketProvider";
 import { GameProvider } from "@/context/GameProvider";
 import { unstable_ViewTransition as ViewTransition } from 'react'
-import Footer from "@/components/Footer";
 const inter = Inter({ weight: ["300", "400", "700"], subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "chess",
@@ -26,7 +25,6 @@ export default function RootLayout({
         <SocketProvider>
           <GameProvider>{children}</GameProvider>
         </SocketProvider>
-        <Footer/>
       </body>
     </html>
     </ViewTransition>

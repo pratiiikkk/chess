@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import PlayPage from "@/components/pages/PlayPage";
 import React from "react";
 
@@ -11,6 +12,9 @@ export default function page() {
   return (
     <>
       <PlayPage />
+              <Footer/>
+
+      
     </>
   );
 }

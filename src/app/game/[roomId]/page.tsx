@@ -60,8 +60,8 @@ export default function GamePage() {
 
   return (
     <>
-      <Container className="max-w-[100vw] text-white">
         <TopBackgroundGradient />
+      <Container className="max-w-[100vw] text-white">
 
         <div className="mt-24 h-[calc(100vh-8rem)]">
           <GameInterface />
