@@ -71,7 +71,7 @@ export default function Hero() {
               </Button>
             </motion.div>
 
-            <motion.div
+            {/* <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className=""
@@ -83,7 +83,7 @@ export default function Hero() {
                 <IconRobot className="size-6" />
                 Play Bot
               </Button>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </motion.div>
 

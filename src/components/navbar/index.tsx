@@ -15,17 +15,10 @@ import Container from "../Container";
 
 const navItems = [
   {
-    name: "About",
-    href: "/about",
+    name: "Play",
+    href: "/Play",
   },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
-  {
-    name: "Blog",
-    href: "/blog",
-  },
+
   {
     name: "github",
     href: "https://github.com/pratiiikkk/chess",
@@ -82,7 +75,7 @@ export default function Navbar() {
                   <motion.span
                     layoutId="nav"
                     className={cn(
-                      "bg-neutral-500/50 dark:bg-neutral-600/30 absolute inset-0 -z-10 h-full w-full rounded-lg",
+                      "absolute inset-0 -z-10 h-full w-full rounded-lg bg-neutral-500/50 dark:bg-neutral-600/30",
                       item.name === "github" && "rounded-full",
                     )}
                     transition={{
@@ -139,13 +132,13 @@ export default function Navbar() {
                 >
                   {navItems.map((item, idx) => (
                     <motion.div
-                      key={idx+"item.name"}
+                      key={idx + "item.name"}
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 40 }}
                       transition={{
                         duration: 0.3,
-                        delay: .3 + idx * 0.15,
+                        delay: 0.3 + idx * 0.15,
                         ease: "easeInOut",
                       }}
                     >
@@ -157,9 +150,13 @@ export default function Navbar() {
                         <motion.span
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.98 }}
-                          className={cn("group-hover:text-primary relative block text-2xl font-light tracking-wide text-neutral-300 transition-colors duration-300 sm:text-5xl",item.name === "github" && "rounded-full bg-neutral-800 p-3")}
+                          className={cn(
+                            "group-hover:text-primary relative block text-2xl font-light tracking-wide text-neutral-300 transition-colors duration-300 sm:text-5xl",
+                            item.name === "github" &&
+                              "rounded-full bg-neutral-800 p-3",
+                          )}
                         >
-                        {item.icon ? item.icon : item.name}
+                          {item.icon ? item.icon : item.name}
                           <motion.div
                             className="bg-primary absolute -bottom-2 left-0 h-0.5 origin-left"
                             initial={{ scaleX: 0 }}
