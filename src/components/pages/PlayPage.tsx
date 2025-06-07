@@ -22,7 +22,7 @@ import Navbar from "../navbar";
 
 export default function PlayPage() {
   const { socket, connect, status } = useSocket();
-  const { joinGame } = useGame();
+  const { joinGame,game } = useGame();
   const { userData } = useUser();
   const router = useRouter();
   const [isCreatingGame, setIsCreatingGame] = useState(false);
@@ -51,9 +51,14 @@ export default function PlayPage() {
       };
 
       socket.on("game_joined", handleGameJoined);
+      if (game?.roomId) {
 
+        joinGame(userData.guestId, game.roomId, userData.playerName);
+      }else{
+        
+        joinGame(userData.guestId, undefined, userData.playerName);
+      }
   
-      joinGame(userData.guestId, undefined, userData.playerName);
     } catch (error) {
       console.error("Failed to start game:", error);
       setIsCreatingGame(false);
